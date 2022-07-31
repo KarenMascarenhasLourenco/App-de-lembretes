@@ -1,0 +1,22 @@
+.card-nota{
+    max-width: 150px;
+    min-width:100px;
+    background-color: lightblue;
+    display:flex;
+}
+.card-nota_titulo{
+font-size:14pt;
+line-height:16pt;
+}
+.card-nota_texto{
+    font-size: 12pt;
+    line-height: 13pt;
+}
+.card-nota_cabecalho{
+    max-height: 70px;
+    min-width:100px;
+    flex-direction: column;
+}
+.deleteImagem{
+    align-self: flex-end;
+}

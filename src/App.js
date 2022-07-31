@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react';
+import ListaDeNotas from './components/ListaDeNotas';
+import FormularioCadastro from './components/FormulárioCadastro';
+import ListaDeCategorias from './components/ListaDeCategorias'
+import'./Assets/App.css';
+import './Assets/index.css';
+import Categorias from './dados/Categorias.js';
+import ArrayDeNotas from './dados/Notas.js'
 
-function App() {
+class App extends Component{
+  constructor(){
+    super();
+    this.categorias= new Categorias();
+    this.notas= new ArrayDeNotas();
+  }
+
+ render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <section className ='pagina-container'>
+      <header className='cabecalho'>
+        <h1>App de Lembretes</h1>
       </header>
-    </div>
-  );
+      <section className ='conteudo'>
+        <FormularioCadastro 
+          categorias = {this.categorias}
+          criarNota = {this.notas.adicionarNota.bind(this.notas)}/>
+        <main className = 'conteudo-principal'>
+          <ListaDeCategorias
+            adicionarCategoria = {this.categorias.adicionarCategoria.bind(this.categorias)}
+            categorias = {this.categorias}
+          />
+          <ListaDeNotas
+            apagarNota={this.notas.apagarNota.bind(this)}
+            notas = {this.notas}
+          />
+        </main>
+      </section>
+    </section>
+   );
+ }
 }
 
 export default App;
